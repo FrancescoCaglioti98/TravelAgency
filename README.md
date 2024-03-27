@@ -95,3 +95,7 @@ although highly appreciated;\
  - Creating docs is big plus;
  - Feature tests are a big big plus.
 
+
+---
+Tutti i messaggi di commit sono generati grazie a:\
+https://whatthecommit.com/
