@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TourRequest;
 use App\Http\Resources\TourResource;
 use App\Models\Travel;
-use Illuminate\Http\Request;
 
 class TourController extends Controller
 {
-    public function store( Travel $travel, TourRequest $tourRequest )
+    public function store(Travel $travel, TourRequest $tourRequest)
     {
-        $tour = $travel->tours()->create( $tourRequest->validated() );
-        return new TourResource( $tour );
+        $tour = $travel->tours()->create($tourRequest->validated());
+
+        return new TourResource($tour);
     }
 }

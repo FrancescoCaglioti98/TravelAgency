@@ -34,38 +34,39 @@ class CreateUserCommand extends Command
 
         $user = [];
 
-        $user["name"] = $this->ask( 'User name?' );
-        $user["email"] = $this->ask( 'User Email?' );
-        $user["password"] = $this->secret( 'User Password?' );
+        $user['name'] = $this->ask('User name?');
+        $user['email'] = $this->ask('User Email?');
+        $user['password'] = $this->secret('User Password?');
 
-        $roleName = $this->choice( "User Role?", ["admin", "editor"], 1 );
-        $role = Role::where( 'name', $roleName )->first();
-        if( !$role ) {
-            $this->error( "Unknown Role" );
+        $roleName = $this->choice('User Role?', ['admin', 'editor'], 1);
+        $role = Role::where('name', $roleName)->first();
+        if (! $role) {
+            $this->error('Unknown Role');
 
             return -1;
         }
 
         $validation = Validator::make($user, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:App\Models\User,email' ],
-            'password' => ['required', Password::defaults()]
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:App\Models\User,email'],
+            'password' => ['required', Password::defaults()],
         ]);
-        if( $validation->fails() ) {
-            foreach ( $validation->errors()->all() as $error) {
-                $this->error( $error );
+        if ($validation->fails()) {
+            foreach ($validation->errors()->all() as $error) {
+                $this->error($error);
             }
+
             return -1;
         }
 
-
-        DB::transaction( function() use ( $user, $role ){
-            $user['password'] = Hash::make( $user["password"] );
+        DB::transaction(function () use ($user, $role) {
+            $user['password'] = Hash::make($user['password']);
             $newUserCreated = User::create($user);
-            $newUserCreated->roles()->attach( $role->id );
-        } );
+            $newUserCreated->roles()->attach($role->id);
+        });
 
-        $this->info( "User " . $user["email"] . " created" );
+        $this->info('User '.$user['email'].' created');
+
         return 0;
     }
 }

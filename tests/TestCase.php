@@ -9,5 +9,4 @@ abstract class TestCase extends BaseTestCase
     use CreatesApplication;
 
     const LARAVEL_DEFAULT_PAGINATION_SIZE = 15;
-
 }

@@ -14,19 +14,18 @@ return new class extends Migration
         Schema::create('tours', function (Blueprint $table) {
             $table->uuid('id')->primary();
 
-            $table->foreignUuid( 'travel_id' )->constrained( 'travels' );
+            $table->foreignUuid('travel_id')->constrained('travels');
 
-            $table->string( 'name' );
-            $table->date( 'starting_date' )->nullable(false);
-            $table->date( 'ending_date' )->nullable(false);
-            $table->unsignedInteger( 'price' )->nullable(false);
+            $table->string('name');
+            $table->date('starting_date')->nullable(false);
+            $table->date('ending_date')->nullable(false);
+            $table->unsignedInteger('price')->nullable(false);
 
             $table->timestamps();
 
-
-            $table->index( 'starting_date' );
-            $table->index( 'ending_date' );
-            $table->index( 'price' );
+            $table->index('starting_date');
+            $table->index('ending_date');
+            $table->index('price');
 
         });
     }

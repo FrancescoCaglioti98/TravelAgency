@@ -12,16 +12,16 @@ class RoleMiddleware
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     * @param string $role Il ruolo che abilitato a passare da qua
+     * @param  string  $role  Il ruolo che abilitato a passare da qua
      */
     public function handle(Request $request, Closure $next, string $role): Response
     {
 
-        if( !auth()->check() ) {
-            abort( 401 );
+        if (! auth()->check()) {
+            abort(401);
         }
 
-        if( !auth()->user()->roles()->where( 'name', $role )->exists() ) {
+        if (! auth()->user()->roles()->where('name', $role)->exists()) {
             abort(403);
         }
 

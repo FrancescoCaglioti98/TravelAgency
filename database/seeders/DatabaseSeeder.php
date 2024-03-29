@@ -15,19 +15,19 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        $this->callOnce( RoleSeeder::class );
-        $this->callOnce( UserSeeder::class );
+        $this->callOnce(RoleSeeder::class);
+        $this->callOnce(UserSeeder::class);
 
-//        $travels = Travel::factory(25)->create();
-//
-//        foreach ( $travels as $travel ) {
-//
-//            if( !$travel->is_public ) {
-//                continue;
-//            }
-//
-//            Tour::factory( rand( 1,10 ) )->create(['travel_id' => $travel->id]);
-//        }
+        //        $travels = Travel::factory(25)->create();
+        //
+        //        foreach ( $travels as $travel ) {
+        //
+        //            if( !$travel->is_public ) {
+        //                continue;
+        //            }
+        //
+        //            Tour::factory( rand( 1,10 ) )->create(['travel_id' => $travel->id]);
+        //        }
 
     }
 }
