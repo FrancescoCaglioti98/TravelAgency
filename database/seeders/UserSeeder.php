@@ -15,6 +15,6 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $user = User::factory( ['email' => 'admin@admin.com',] )->create();
-        $user->roles()->attach( Role::where('name', 'user')->value("id") );
+        $user->roles()->attach( Role::where('name', 'admin')->value("id") );
     }
 }

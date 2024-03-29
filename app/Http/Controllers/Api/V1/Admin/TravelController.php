@@ -11,9 +11,15 @@ use Illuminate\Http\Request;
 class TravelController extends Controller
 {
 
-    public function store( TravelRequest $travelRequest )
+    public function store( TravelRequest $travelRequest ): TravelResource
     {
         $travel = Travel::create( $travelRequest->validated() );
+        return new TravelResource($travel);
+    }
+
+    public function update( Travel $travel, TravelRequest $travelRequest ): TravelResource
+    {
+        $travel->update( $travelRequest->validated() );
         return new TravelResource($travel);
     }
 
