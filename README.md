@@ -26,6 +26,10 @@ Alla generazione verranno chieste alcune informazioni:
  - Password
  - Ruolo
 
+In alternativa, nella fase di migrazione basta aggiungere il parametro `--seed` per permettere la creazione dei ruoli basici e di un primo utente ADMIN.\
+Questo utente admin avrà:
+- email => admin@admin.com
+- password => password
 
 In allegato le richieste che ho seguito per basarmi sulla realizzazione di questi punti API:
 
